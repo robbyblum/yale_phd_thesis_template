@@ -5,3 +5,6 @@
 *.lot
 *.ps
 *.toc
+*~
+*.fdb_latexmk
+*.fls
