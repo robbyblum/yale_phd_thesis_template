@@ -1,0 +1,73 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[yalephd]{book (Yale PhD)}
+#  \DeclareCategory{Books}
+ 
+# Input general definitions
+Input stdclass.inc
+    
+Style Advisor
+    LatexName               advisor
+    LatexType               Command
+    LabelType               No_Label
+    InTitle                 1
+    Category                FrontMatter
+    Align                   Center
+    Font
+        Shape               SmallCaps
+        Size                Large
+    EndFont
+End
+
+Style Abstract
+    InTitle                 1
+End
+
+Style Copyright
+    LatexName               makecopyright
+    LatexType               Command
+    LabelType               No_Label
+    Category                FrontMatter
+    Align                   Center
+    Font
+        Size                Large
+    EndFont
+    LabelString             "Copyright: "
+    LabelSep                xx
+    LabelType               Static
+    TopSep                  1
+    BottomSep               1
+End
+
+Style FrontMatterCommand
+    LatexName               frontmatter
+    LatexType               Command
+    LabelType               No_Label
+    Category                FrontMatter
+    Align                   Center
+    Font
+        Size                Large
+        Color               red
+    EndFont
+    KeepEmpty               1
+    LabelString             "Front Matter"
+    LabelType               Static
+    TopSep                  1
+    BottomSep               1
+End
+
+Style MainMatterCommand
+    LatexName               mainmatter
+    LatexType               Command
+    LabelType               No_Label
+    Category                FrontMatter
+    Align                   Center
+    Font
+        Size                Large
+        Color               red
+    EndFont
+    KeepEmpty               1
+    LabelString             "Main Matter"
+    LabelType               Static
+    TopSep                  1
+    BottomSep               1
+End
