@@ -224,7 +224,7 @@ class, modified by AG]
 %\geometry{left=1.5 in, right=1 in, top=1 in,bottom=1.0 in,nohead,footskip=0.5 in}
 \geometry{left=1.5 in, right=1 in, top=1 in,bottom=1.0 in,headheight=15pt,footskip=0.5 in}
 
-\RequirePackage{microtype}	% Typography refinement
+\RequirePackage[final]{microtype}	% Typography refinement
 \RequirePackage{setspace}
 \doublespacing
 
