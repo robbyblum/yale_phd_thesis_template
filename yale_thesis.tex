@@ -12,6 +12,7 @@
 
 \usepackage{geometry} % you need this for yalephd.cls to work.
 \usepackage{graphicx} % you probably want the rest of these.
+\setkeys{Gin}{draft=false} % with this, basically all that the draft option does is add a header
 \usepackage{dcolumn}
 \usepackage{bm}
 \usepackage{amsmath}
@@ -21,10 +22,9 @@
 \usepackage{comment}
 \usepackage{cite}
 \usepackage{notoccite}
+\usepackage[draft=false]{hyperref} % always generates hyperlinks, even in draft mode
 
 \bibliographystyle{abbrvunsrt}
-
-\begin{document}
 
 % Need to define title before the abstract.
 \title{Title goes here}
@@ -32,19 +32,21 @@
 \advisor{Your advisor's name}
 \date{Month, year you'll receive your degree, like ``May, 2015''} % usually not \today.
 
+\begin{document}
+
 % All the stuff at the front of your thesis.
 \frontmatter
 
 \begin{abstract}
-Abstract goes here. Limit 750 words.
+Abstract goes here. Limit 750 words. You can insert it from another tex file if you want.
 \end{abstract}
 
-
 \maketitle
-\makecopyright{2015} % change as needed.
+\makecopyright{\printyear} % \printyear was populated from the \date{} entry already
 \tableofcontents
 \listoffigures % remove this if you have no figures.
 \listoftables % remove this if you have no tables.
+
 
 \chapter{Acknowledgements} % this needs to be before \mainmatter.
 A lot of people are awesome. Probably your family, friends, 
@@ -93,21 +95,24 @@ Your second chapter probably has novel material in it. hopefully.
 % for long equations, use multline.
 
 % for figures:
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[width=.45\textwidth]{name_of_figure.eps}
-%\caption{A caption! \label{a_figure}}
-%\end{figure}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.45\textwidth]{name_of_figure.eps}
+\caption{A caption! \label{a_figure}}
+\end{figure}
 
 % for tables:
-%\begin{table}
-%\begin{tabular}{c|c|c}
-% 1 & 2 & 3 \\
-%\hline
-%\end{tabular}
-%\caption{Another caption! \label{a_table}}
-%\end{table}
+\begin{table}
+\centering
+\begin{tabular}{c|c|c}
+ 1 & 2 & 3 \\
+\hline
+\end{tabular}
+\caption{Another caption! \label{a_table}}
+\end{table}
 
+
+% once you're finished your main chapters, on to the appendices
 % Only call appendix once, here.
 \appendix
 
