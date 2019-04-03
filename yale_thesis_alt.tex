@@ -1,0 +1,94 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% yale_thesis_alt.tex
+% Robby Blum
+% 2019/04/03
+%
+% A bare, sample template for a Yale PhD thesis using yalephd.cls
+% This one has been modified from the regular version, in order to break up the content
+% into multiple files that get inserted into the main one.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,11pt]{yalephd}
+% remove draft option for final printing.
+% font size must be between 10pt-12pt.
+
+\usepackage{geometry} % you need this for yalephd.cls to work.
+\usepackage{graphicx} % you probably want the rest of these.
+\setkeys{Gin}{draft=false} % with this, basically all that the draft option does is add a header
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{appendix}
+\usepackage{comment}
+\usepackage{cite}
+\usepackage{notoccite}
+\usepackage[draft=false]{hyperref} % always generates hyperlinks, even in draft mode
+
+\bibliographystyle{abbrvunsrt}
+
+% Need to define title before the abstract.
+\title{Title goes here}
+\author{Your name}
+\advisor{Your advisor's name}
+\date{Month, year you'll receive your degree, like ``May, 2015''} % usually not \today.
+
+% This structure lets you remove parts of the document without changing the overall structure.
+% So, if you comment out everything but chapter 2, the only material in the main text you get is
+% chapter 2, but the page numbers, TOC, etc are all still correct. Useful for working on one part
+% at a time.
+\includeonly{
+content/1-introduction,
+content/2-newchapter,
+content/A-stuff,
+content/B-morestuff
+}
+
+\begin{document}
+
+% All the stuff at the front of your thesis.
+\frontmatter
+
+\begin{abstract}
+	\input{content/0-abstract.tex} % loads the abstract from a different file
+	% this one uses \input bc it's just pasting text, but the chapters will use \include
+\end{abstract}
+
+\maketitle
+\makecopyright{\printyear} % \printyear was populated from the \date{} entry already
+\tableofcontents
+\listoffigures % remove this if you have no figures.
+\listoftables % remove this if you have no tables.
+
+
+\chapter{Acknowledgements} % this needs to be before \mainmatter.
+A lot of people are awesome. Probably your family, friends, 
+advisor, and that one super special high school teacher who
+believed in you.
+
+% Starts proper arabic numbering of pages and chapters.
+\mainmatter
+
+%% Include your chapters here
+\include{content/1-introduction}
+
+\include{content/2-newchapter}
+
+
+% once you're finished your main chapters, on to the appendices
+% Only call appendix once, here.
+\appendix
+
+\include{content/A-stuff}
+
+\include{content/B-morestuff}
+
+% Any chapters such as End Notes go after this.
+\backmatter
+
+\bibliography{name_of_your_bibtex_file}
+% for your own sake, use a bibtex file, so all of the numbering of references will be done
+% automatically.
+
+\end{document}
