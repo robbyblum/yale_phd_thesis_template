@@ -3,7 +3,10 @@ a PhD dissertation at Yale University.
 
 ## Using LaTeX
 
-Simply modify the `yale_thesis.tex` document as necessary.
+Simply modify the `yale_thesis_alt.tex` document as necessary.
+`yale_thesis.tex` is roughly equivalent, but it doesn't use the
+distributed file structure stuff. It's harder to edit a dissertation
+when it's all in one giant file, so I recommend using `yale_thesis_alt.tex`.
 
 ## Using LyX
 
