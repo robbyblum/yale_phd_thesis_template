@@ -168,6 +168,45 @@ class, modified by AG]
 
 
 %--------------------------------------------------------------------
+% Do some complex regex stuff in order to extract a year from the date entry.
+% Most of it has been copied from "yale-thesis.cls" by J. Petty
+% (https://github.com/jopetty/yale-thesis).
+%--------------------------------------------------------------------
+\RequirePackage{expl3, xparse}
+
+\ExplSyntaxOn
+
+%% Define Class Commands
+\seq_new:N  \g_ythesis_year_seq % Sequence to store the match from regex
+\tl_new:N   \g_ythesis_year_tl  % Token list to store the year
+\tl_new:N   \g_ythesis_date_tl  % Token list to store the full date
+
+% Expand commands passed to \date{}, like \today
+\cs_generate_variant:Nn \regex_extract_all:nnN { nx }
+
+% Redefine \date in order to input it into the regex stuff
+\RenewDocumentCommand\date{ m }     
+{
+    \tl_gset:Nx \g_ythesis_date_tl {#1}
+    \regex_extract_all:nxN {(\d{4})} {\g_ythesis_date_tl} \g_ythesis_year_seq
+    \tl_gset:Nn \g_ythesis_year_tl {\seq_item:Nn \g_ythesis_year_seq {1}}
+}
+
+% make a new command to print the date
+\NewDocumentCommand\printdate{ }
+{
+    \g_ythesis_date_tl
+}
+% make a new command to print the year
+\NewDocumentCommand\printyear{ }
+{
+    \g_ythesis_year_tl
+}
+
+\ExplSyntaxOff
+
+
+%--------------------------------------------------------------------
 % Physical layout of the page: 1.5" left margin, all others 1".
 % Double spacing, including between (but not within) footnotes.
 % Chicago-style footnote format: the number within the note is
@@ -182,9 +221,10 @@ class, modified by AG]
 \pagestyle{plain}
 
 \RequirePackage{geometry}
-\geometry{left=1.5 in, right=1 in, top=1 in,bottom=1.0 in,nohead,footskip=0.5 in}
+%\geometry{left=1.5 in, right=1 in, top=1 in,bottom=1.0 in,nohead,footskip=0.5 in}
+\geometry{left=1.5 in, right=1 in, top=1 in,bottom=1.0 in,headheight=15pt,footskip=0.5 in}
 
-
+\RequirePackage{microtype}	% Typography refinement
 \RequirePackage{setspace}
 \doublespacing
 
@@ -215,7 +255,7 @@ class, modified by AG]
       {\bf Abstract}\par\bigskip
       {\Large \bf \@title}\par\bigskip
       \@author \\
-      \the\year
+      \printyear
       \end{center}%
   }{\end{titlepage}}
 
@@ -248,8 +288,7 @@ class, modified by AG]
               \@author\par\vskip 1.5em%
          Dissertation Director: \@advisorline\par
     }\vskip 1.5em%
-    {\large \@date \par
-    \ifdraft Draft of \today\par\fi
+    {\large \printdate \par
     }%
   \end{singlespace}
   \end{center}
@@ -277,6 +316,31 @@ class, modified by AG]
   \end{center}
   \clearpage
 }%
+
+
+%--------------------------------------------------------------------
+% draft option header
+% adapted from "yale-thesis.cls" by J. Petty (https://github.com/jopetty/yale-thesis).
+%--------------------------------------------------------------------
+
+\ifdraft
+	\RequirePackage{fancyhdr}
+	
+	% Add draft header to titlepage(s)
+	\fancypagestyle{empty}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\fancyhead[R]{\texttt{DRAFT~of~\today}}
+	}
+	
+	% Add draft header to pages @ the start of chapters
+	\fancypagestyle{plain}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\fancyhead[R]{\texttt{DRAFT~of~\today}}
+		\fancyfoot[C]{\thepage}
+	}
+\fi
 
 
 % EOF
