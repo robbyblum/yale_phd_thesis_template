@@ -6,7 +6,7 @@
 % A bare, sample template for a Yale PhD thesis using yalephd.cls
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[letterpaper,11pt]{yalephd}
+\documentclass[letterpaper,12pt]{yalephd}
 % remove draft option for final printing.
 % font size must be between 10pt-12pt.
 
@@ -24,7 +24,20 @@
 \usepackage{notoccite}
 \usepackage[draft=false]{hyperref} % always generates hyperlinks, even in draft mode
 
+% bibliography style if you're using BibTeX. Comment this out if using BibLaTeX!
 \bibliographystyle{abbrvunsrt}
+
+%% Load BibLaTeX if you're using it. These style options are similar to Physical Review Letters style,
+%% but somewhat more verbose (titles are included, for instance).
+%\usepackage[
+%    backend=biber,
+%    style=phys,
+%    biblabel=brackets,
+%    eprint=true
+%]{biblatex}
+%% If using BibLaTeX, you need to load your bibliography file in the preamble
+%\addbibresource{name_of_your_bibtex_file.bib}
+
 
 % Need to define title before the abstract.
 \title{Title goes here}
@@ -130,8 +143,10 @@ A second appendix. Look at you, you over achiever.
 % Any chapters such as End Notes go after this.
 \backmatter
 
-\bibliography{name_of_your_bibtex_file}
 % for your own sake, use a bibtex file, so all of the numbering of references will be done
-% automatically.
+% automatically. BibTeX version:
+\bibliography{name_of_your_bibtex_file}
+% BibLaTeX version:
+%\printbibliography[heading=bibintoc]
 
 \end{document}
