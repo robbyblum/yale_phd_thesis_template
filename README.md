@@ -1,4 +1,4 @@
-This Github Repository is for a latex template and class file for a PhD dissertation at Yale University.
+This Github Repository is for a latex template and class file for a PhD dissertation at Yale University. Most recently updated by Robby Blum; my version merges this with a number of good ideas from Jackson Petty's yale-thesis project (https://github.com/jopetty/yale-thesis/). The One True Yale Dissertation Template still eludes us, but hopefully this is a step forward!
 
 ## Using LaTeX
 
