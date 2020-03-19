@@ -2,7 +2,7 @@ This Github Repository is for a latex template and class file for a PhD disserta
 
 ## Using LaTeX
 
-Simply modify the `yale_thesis_alt.tex` document as necessary. `yale_thesis.tex` is roughly equivalent, but it doesn't use the distributed file structure. It's harder to edit a dissertation when it's all in one giant file, so I recommend using `yale_thesis_alt.tex`.
+Simply modify the `yale_thesis.tex` document as necessary. `yale_thesis_alt.tex` is roughly equivalent, but it doesn't use the distributed file structure. It's harder to edit a dissertation when it's all in one giant file, so I recommend using `yale_thesis.tex`.
 
 ## Using LyX
 

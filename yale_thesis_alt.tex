@@ -1,11 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% yale_thesis_alt.tex
-% Robby Blum
-% 2019/04/03
+% yale_thesis.tex
+% Alexander Cerjan
+% 2014/04/07
 %
 % A bare, sample template for a Yale PhD thesis using yalephd.cls
-% This one has been modified from the regular version, in order to break up the content
-% into multiple files that get inserted into the main one.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[letterpaper,11pt]{yalephd}
@@ -28,26 +26,11 @@
 
 \bibliographystyle{abbrvunsrt}
 
-\include{definitions}
-
-
 % Need to define title before the abstract.
 \title{Title goes here}
 \author{Your name}
 \advisor{Your advisor's name}
 \date{Month, year you'll receive your degree, like ``May, 2015''} % usually not \today.
-
-% This structure lets you remove parts of the document without changing the overall structure.
-% So, if you comment out everything but chapter 2, the only material in the main text you get is
-% chapter 2, but the page numbers, TOC, etc are all still correct. Useful for working on one part
-% at a time.
-\includeonly{
-definitions,
-content/1-introduction,
-content/2-newchapter,
-content/A-stuff,
-content/B-morestuff
-}
 
 \begin{document}
 
@@ -55,8 +38,7 @@ content/B-morestuff
 \frontmatter
 
 \begin{abstract}
-	\input{content/0-abstract.tex} % loads the abstract from a different file
-	% this one uses \input bc it's just pasting text, but the chapters will use \include
+Abstract goes here. Limit 750 words. You can insert it from another tex file if you want.
 \end{abstract}
 
 \maketitle
@@ -74,19 +56,76 @@ believed in you.
 % Starts proper arabic numbering of pages and chapters.
 \mainmatter
 
-%% Include your chapters here
-\include{content/1-introduction}
+\chapter{Introduction}
+Your first chapter is probably an introduction. But who knows. Check out Eq.\ (\ref{that_right_triangle_rule})!
+Note that after Eq.\ and Fig.\ you want to use `.\textbackslash'  to use a single sized space. Otherwise,
+latex will interpret it as the end of a sentence and put additional white space in between `Eq.' and 
+`(\ref{that_right_triangle_rule})'.
 
-\include{content/2-newchapter}
+\begin{equation}
+a^2 + b^2 = c^2 \label{that_right_triangle_rule}
+\end{equation}
+
+The Physics Department recommends that the first chapter of the thesis be 
+a succinct summary of the entire thesis, including in particular:
+
+\begin{enumerate}
+  \item a brief review of the field prior to the thesis research to provide context
+  \item a presentation of the goals and motivations of the thesis research 
+  \item a clear description of what the student has achieved in the thesis research
+ (primarily written in the first person singular, but with due credit to
+ others as appropriate). This description should refer back to (1) and clearly indicate the relation
+ to prior work.
+\end{enumerate}
+It may also make sense to add suggestions for how to best build upon the thesis research in future work. Otherwise these suggestions should appear in the conclusion of the thesis.
+
+
+\chapter{A new chapter}
+Your second chapter probably has novel material in it. hopefully.
+
+% Add additional \chapter{}s as necessary.
+
+% use \cite{} to cite a reference in your bibliography file.
+% use \ref{} to reference a \label{} from an equation, figure, or table.
+
+% for sets of equations use align or gather:
+%\begin{align}
+%\end{align}
+
+% for long equations, use multline.
+
+% for figures:
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.45\textwidth]{name_of_figure.eps}
+\caption{A caption! \label{a_figure}}
+\end{figure}
+
+% for tables:
+\begin{table}
+\centering
+\begin{tabular}{c|c|c}
+ 1 & 2 & 3 \\
+\hline
+\end{tabular}
+\caption{Another caption! \label{a_table}}
+\end{table}
 
 
 % once you're finished your main chapters, on to the appendices
 % Only call appendix once, here.
 \appendix
 
-\include{content/A-stuff}
+\chapter{Stuff}
+If you need an appendix, it will go here.
 
-\include{content/B-morestuff}
+\begin{align}
+a^n + b^n &\ne c^n \\
+n &> 2
+\end{align}
+
+\chapter{More stuff}
+A second appendix. Look at you, you over achiever.
 
 % Any chapters such as End Notes go after this.
 \backmatter
