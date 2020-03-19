@@ -22,9 +22,14 @@
 \usepackage{amssymb}
 \usepackage{appendix}
 \usepackage{comment}
+% If you're using BibLaTeX, you can't use the cite package, so comment it out (it's incompatible, but also redundant)
 \usepackage{cite}
 \usepackage{notoccite}
 \usepackage[draft=false]{hyperref} % always generates hyperlinks, even in draft mode
+\usepackage{cleveref}
+% subcaption makes the hyperlinks to figures and such go to the top of the float, not the top of the caption.
+% I assume it does other stuff as well, but that's why I used it.
+\usepackage{subcaption}
 
 % bibliography style if you're using BibTeX. Comment this out if using BibLaTeX!
 \bibliographystyle{abbrvunsrt}
@@ -42,7 +47,8 @@
 
 
 \include{definitions}
-
+% One space after periods, not two
+\frenchspacing
 
 % Need to define title before the abstract.
 \title{Title goes here}

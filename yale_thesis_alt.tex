@@ -23,6 +23,10 @@
 \usepackage{cite}
 \usepackage{notoccite}
 \usepackage[draft=false]{hyperref} % always generates hyperlinks, even in draft mode
+\usepackage{cleveref}
+% subcaption makes the hyperlinks to figures and such go to the top of the float, not the top of the caption.
+% I assume it does other stuff as well, but that's why I used it.
+\usepackage{subcaption}
 
 % bibliography style if you're using BibTeX. Comment this out if using BibLaTeX!
 \bibliographystyle{abbrvunsrt}
@@ -38,6 +42,10 @@
 %% If using BibLaTeX, you need to load your bibliography file in the preamble
 %\addbibresource{name_of_your_bibtex_file.bib}
 
+
+\include{definitions}
+% One space after periods, not two
+\frenchspacing
 
 % Need to define title before the abstract.
 \title{Title goes here}
@@ -69,11 +77,17 @@ believed in you.
 % Starts proper arabic numbering of pages and chapters.
 \mainmatter
 
-\chapter{Introduction}
+\chapter{Introduction} \label{chapter1}
 Your first chapter is probably an introduction. But who knows. Check out Eq.\ (\ref{that_right_triangle_rule})!
 Note that after Eq.\ and Fig.\ you want to use `.\textbackslash'  to use a single sized space. Otherwise,
 latex will interpret it as the end of a sentence and put additional white space in between `Eq.' and 
 `(\ref{that_right_triangle_rule})'.
+Actually, you might want to input a tilde (\texttt{\~}) (a non-breaking space) instead of a space, so that the `Eq.' and number don't break across a line.
+Or you could use commands from \texttt{hyperref} or \texttt{cleveref}.
+See \cref{chapter2} for that...
+
+By the way, I strongly recommend splitting up your paragraphs so that you have each sentence on its own line.
+This makes the diffs much easier to read, which makes version control more useful.
 
 \begin{equation}
 a^2 + b^2 = c^2 \label{that_right_triangle_rule}
@@ -93,8 +107,8 @@ a succinct summary of the entire thesis, including in particular:
 It may also make sense to add suggestions for how to best build upon the thesis research in future work. Otherwise these suggestions should appear in the conclusion of the thesis.
 
 
-\chapter{A new chapter}
-Your second chapter probably has novel material in it. hopefully.
+\chapter{A new chapter} \label{chapter2}
+Your second chapter probably has novel material in it. Hopefully. Here's a math object written using a shortcut that I defined in a separate file: $\Pzero$.
 
 % Add additional \chapter{}s as necessary.
 
@@ -110,18 +124,28 @@ Your second chapter probably has novel material in it. hopefully.
 % for figures:
 \begin{figure}[ht]
 \centering
-\includegraphics[width=.45\textwidth]{name_of_figure.eps}
-\caption{A caption! \label{a_figure}}
+\includegraphics[width=.45\textwidth]{name_of_figure.pdf}
+\caption[Short caption for the list of figures]{A figure caption!}
+\label{a_figure}
 \end{figure}
+
+More material. Very exciting! Take a look at this reference to Figure~\ref{a_figure}.
+Alternatively, you might want to use the \texttt{cleveref} package, which would give you this: \cref{a_figure}.
+Or, you could use \texttt{hyperref}'s \texttt{autoref} command: \autoref{a_figure}.
+I think that \texttt{cleveref} is the best of these options, because it lets you do multiple references gracefully and consistently: \cref{a_figure,a_table}.
+\Cref{a_figure} can also be cited at the start of a sentence using \texttt{Cref} instead of \texttt{cref}; note the different result.
 
 % for tables:
 \begin{table}
 \centering
 \begin{tabular}{c|c|c}
  1 & 2 & 3 \\
+ 4 & 5 & 6 \\
+ 7 & 8 & 9 \\
 \hline
 \end{tabular}
-\caption{Another caption! \label{a_table}}
+\caption[Short caption for the list of tables]{Another caption! This one is for a table, not a figure.}
+\label{a_table}
 \end{table}
 
 

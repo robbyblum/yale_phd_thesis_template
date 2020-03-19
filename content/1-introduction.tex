@@ -1,8 +1,14 @@
-\chapter{Introduction}
+\chapter{Introduction} \label{chapter1}
 Your first chapter is probably an introduction. But who knows. Check out Eq.\ (\ref{that_right_triangle_rule})!
 Note that after Eq.\ and Fig.\ you want to use `.\textbackslash'  to use a single sized space. Otherwise,
 latex will interpret it as the end of a sentence and put additional white space in between `Eq.' and 
 `(\ref{that_right_triangle_rule})'.
+Actually, you might want to input a tilde (\texttt{\~}) (a non-breaking space) instead of a space, so that the `Eq.' and number don't break across a line.
+Or you could use commands from \texttt{hyperref} or \texttt{cleveref}.
+See \cref{chapter2} for that...
+
+By the way, I strongly recommend splitting up your paragraphs so that you have each sentence on its own line.
+This makes the diffs much easier to read, which makes version control more useful.
 
 \begin{equation}
 a^2 + b^2 = c^2 \label{that_right_triangle_rule}
