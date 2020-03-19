@@ -253,7 +253,7 @@ class, modified by AG]
     \pagestyle{empty}%
     \begin{center}
       {\bf Abstract}\par\bigskip
-      {\Large \bf \@title}\par\bigskip
+      {\bf \@title}\par\bigskip
       \@author \\
       \printyear
       \end{center}%
@@ -274,21 +274,21 @@ class, modified by AG]
 \renewcommand\maketitle{\begin{titlepage}%
   \null \vskip 40\p@
   \begin{center}%
-    {\LARGE\bf \@title \par}%
-    \vfil
+    {\bf \@title \par}%
+    \vfill
     \begin{singlespace}
-    {\large
+    {
                A Dissertation\\
       Presented to the Faculty of the Graduate School\\
                  of\\
               Yale University\\
            in Candidacy for the Degree of\\
-         Doctor of Philosophy\par\vfil\vskip 6ex%
+         Doctor of Philosophy\par\vfill\vskip 6ex%
                  by\\
               \@author\par\vskip 1.5em%
          Dissertation Director: \@advisorline\par
     }\vskip 1.5em%
-    {\large \printdate \par
+    {\printdate \par
     }%
   \end{singlespace}
   \end{center}
@@ -314,6 +314,7 @@ class, modified by AG]
   Copyright \copyright\ #1 by \@author \\
   All rights reserved.
   \end{center}
+  \thispagestyle{empty}
   \clearpage
 }%
 
