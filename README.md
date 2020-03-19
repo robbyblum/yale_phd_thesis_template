@@ -6,6 +6,6 @@ Simply modify the `yale_thesis_alt.tex` document as necessary. `yale_thesis.tex`
 
 ## Using LyX
 
-Run `bash linker.sh`, or use the commands in it to do it yourself.
+The LyX stuff is old; I (RLB) don't use LyX, so I never tried to get it to work. I have no idea if it works, and it may not look the same as the "normal" LaTeX version. Original instructions:
 
-Use `thesis.lyx` as a template.
+Run `bash linker.sh`, or use the commands in it to do it yourself. Use `thesis.lyx` as a template.
